@@ -14,6 +14,11 @@ $ pypgstac load items benchmark/stac/items.json --dsn postgresql://username:pass
 ### Start API
 ```bash
 # This should be done at the repo root level
+POSTGRES_USER=username
+POSTGRES_PASS=password
+POSTGRES_DBNAME=postgis
+POSTGRES_HOST=localhost
+POSTGRES_PORT=5439
 $ uvicorn titiler.pgstac.main:app --port 8081
 ```
 
@@ -107,4 +112,16 @@ Successful transactions:         194
 Failed transactions:               6
 Longest transaction:            8.43
 Shortest transaction:           0.52
+```
+
+
+### Add multiple dates for global extent items/collections to the db
+
+```bash
+python create_stac_items.py
+```
+
+```bash
+$ pypgstac load collections benchmark/stac/dates-collection.json --dsn postgresql://username:password@localhost:5439/postgis --method insert
+$ pypgstac load items stac/stac_items.ndjson --dsn postgresql://username:password@localhost:5439/postgis --method upsert
 ```
