@@ -8,6 +8,7 @@ from rio_tiler.models import ImageData
 
 pool = ConnectionPool(conninfo="postgresql://postgres:postgres@localhost:5439/postgres") 
 # TypeError: __init__() missing 1 required positional argument: 'input'
+# input should be a mosaic ID (hash)
 backend = PGSTACBackend(pool=pool)
 
 def assets_for_tile(x: int, y: int, z: int) -> List[Dict]:
