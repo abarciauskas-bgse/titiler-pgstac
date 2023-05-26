@@ -122,6 +122,6 @@ python create_stac_items.py
 ```
 
 ```bash
-$ pypgstac load collections benchmark/stac/dates-collection.json --dsn postgresql://username:password@localhost:5439/postgis --method insert
-$ pypgstac load items stac/stac_items.ndjson --dsn postgresql://username:password@localhost:5439/postgis --method upsert
+$ pypgstac load collections benchmark/stac/cmip6_stac_collection.json --dsn postgresql://username:password@localhost:5439/postgis --method upsert
+$ pypgstac load items benchmark/stac/cmip6_stac_items.ndjson --dsn postgresql://username:password@localhost:5439/postgis --method upsert
 ```
